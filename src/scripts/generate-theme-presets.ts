@@ -15,7 +15,7 @@
  * - You may optionally integrate it directly into a build step if preferred.
  */
 
-import { execFileSync } from "node:child_process";
+import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -108,17 +108,26 @@ const updated = fileContent.replace(
 );
 
 async function main() {
-  const formatted = execFileSync("npx", ["@biomejs/biome", "format", "--stdin-file-path", outputPath], {
-    input: updated,
-    encoding: "utf8",
-  });
-
-  if (formatted === fileContent) {
+  if (updated === fileContent) {
     console.log("ℹ️  No changes in theme.ts");
     return;
   }
 
-  fs.writeFileSync(outputPath, formatted);
+  // Write the updated content first
+  fs.writeFileSync(outputPath, updated);
+
+  // Format the file in place using biome
+  try {
+    execSync(`npx @biomejs/biome format --write "${outputPath}"`, {
+      encoding: "utf8",
+      shell: true,
+      stdio: "pipe",
+    });
+  } catch {
+    // Formatting is optional, continue if it fails
+    console.warn("⚠️  Could not format theme.ts with biome");
+  }
+
   console.log("✅ theme.ts updated with new theme presets");
 }
 

@@ -1,133 +1,267 @@
-# Next.js Admin Template with TypeScript & Shadcn UI
+# Ultimate Planner
 
-**Studio Admin** - Includes multiple dashboards, authentication layouts, customizable theme presets, and more.
+**The Figma of System Design** — A visual-first architecture tool for senior engineers to design complex systems, make critical decisions, and generate executable AI planning files.
 
-<img src="https://github.com/arhamkhnz/next-shadcn-admin-dashboard/blob/main/media/dashboard.png?version=5" alt="Dashboard Screenshot">
+## The Problem: Blind AI Coding
 
-Most admin templates I found, free or paid, felt cluttered, outdated, or too rigid. I built this as a cleaner alternative with features often missing in others, such as theme toggling and layout controls, while keeping the design modern, minimal, and flexible.
+AI coding assistants are powerful, but they operate blind. Without understanding your system's architecture, scalability constraints, or security requirements, they generate code in isolation — leading to:
 
-I’ve taken design inspiration from various sources. If you’d like credit for something specific, feel free to open an issue or reach out.
+- Inconsistent architectural decisions across your codebase
+- Components that don't align with your infrastructure choices
+- Repeated context-setting in every AI conversation
+- No visual spec for AI agents to validate their output against
 
-> **View demo:** [studio admin](https://next-shadcn-admin-dashboard.vercel.app)
+**Ultimate Planner bridges this gap.** It provides AI with a complete visual and contextual understanding of your system before a single line of code is written.
 
-> [!TIP]
-> I’m also working on Nuxt.js, Svelte, and React (Vite + TanStack Router) versions of this dashboard. They’ll be live soon.
+---
 
-## Features
+## Core Features
 
-- Built with Next.js 16, TypeScript, Tailwind CSS v4, and Shadcn UI  
-- Responsive and mobile-friendly  
-- Customizable theme presets (light/dark modes with color schemes like Tangerine, Brutalist, and more)  
-- Flexible layouts (collapsible sidebar, variable content widths)  
-- Authentication flows and screens  
-- Prebuilt dashboards (Default, CRM, Finance) with more coming soon  
-- Role-Based Access Control (RBAC) with config-driven UI and multi-tenant support *(planned)*  
+### Visual Systemizer
 
-> [!NOTE]
-> The default dashboard uses the **shadcn neutral** theme.  
-> It also includes additional color presets inspired by [Tweakcn](https://tweakcn.com):  
->
-> - Tangerine  
-> - Neo Brutalism  
-> - Soft Pop  
->
-> You can create more presets by following the same structure as the existing ones.
+An infinite canvas built with React Flow for architecting complex distributed systems.
 
-> Looking for the **Next.js 15** version?  
-> Check out the [`archive/next15`](https://github.com/arhamkhnz/next-shadcn-admin-dashboard/tree/archive/next15) branch.  
-> This branch contains the setup prior to upgrading to Next 16 and the React Compiler.
+- Drag-and-drop system components: **Microservices**, **Databases**, **Caches**, **Message Queues**, **Load Balancers**, **CDNs**, **Third-party APIs**
+- Define relationships, data flows, and dependencies visually
+- Export architecture as code-ready specifications
 
-> Looking for the **Next.js 14 + Tailwind CSS v3** version?  
-> Check out the [`archive/next14-tailwindv3`](https://github.com/arhamkhnz/next-shadcn-admin-dashboard/tree/archive/next14-tailwindv3) branch.  
-> It has a different color theme and is not actively maintained, but I try to keep it updated with major changes.  
+### Senior-Level Decision Panels
 
-## Tech Stack
+Each component prompts you with critical architectural questions — not simple settings.
 
-- **Framework**: Next.js 16 (App Router), TypeScript, Tailwind CSS v4  
-- **UI Components**: Shadcn UI  
-- **Validation**: Zod  
-- **Forms & State Management**: React Hook Form, Zustand  
-- **Tables & Data Handling**: TanStack Table  
-- **Tooling & DX**: Biome, Husky  
+| Component | Decision Prompts |
+|-----------|------------------|
+| Database | ACID vs. BASE? Read/write ratio? Sharding strategy? |
+| Cache | Write-through vs. write-behind? Eviction policy? TTL strategy? |
+| Service | Sync vs. async communication? Circuit breaker config? |
+| API Gateway | Rate limiting? Auth strategy? Request transformation? |
 
-## Screens
+These decisions are captured and included in the generated AI context.
 
-### Available
-- Default Dashboard  
-- CRM Dashboard  
-- Finance Dashboard  
-- Authentication (4 screens)
+### AI Context Bridge
 
-### Coming Soon
-- Analytics Dashboard  
-- eCommerce Dashboard  
-- Academy Dashboard  
-- Logistics Dashboard  
-- Email Page  
-- Chat Page  
-- Calendar Page  
-- Kanban Board  
-- Invoice Page  
-- Users Management  
-- Roles Management  
+Upload UI screenshots, wireframes, or design inspirations. The AI analyzes visual inputs and suggests:
 
-## Colocation File System Architecture
+- Backend data models and API structures
+- Component boundaries and service decomposition
+- Infrastructure requirements based on UI complexity
 
-This project follows a **colocation-based architecture** each feature keeps its own pages, components, and logic inside its route folder.  
-Shared UI, hooks, and configuration live at the top level, making the codebase modular, scalable, and easier to maintain as the app grows.
+### Claude Code Integration
 
-For a full breakdown of the structure with examples, see the [Next Colocation Template](https://github.com/arhamkhnz/next-colocation-template).
+One-click generation of AI-ready planning files:
 
-## Getting Started
+```
+your-project/
+├── CLAUDE_PLAN.md          # Complete system spec for Claude
+└── .claude/
+    ├── settings.json       # Project-specific Claude config
+    ├── agents/
+    │   ├── design-reviewer.md
+    │   ├── security-auditor.md
+    │   └── performance-analyst.md
+    └── mcp/
+        ├── playwright.json # Visual testing config
+        └── context7.json   # Documentation fetching
+```
 
-You can run this project locally, or deploy it instantly with Vercel.
+### Agentic Iteration Loop
 
-### Deploy with Vercel
+Integration with Playwright MCP enables AI agents to:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Farhamkhnz%2Fnext-shadcn-admin-dashboard)
+1. **See** the running implementation via browser automation
+2. **Compare** rendered output against the visual architecture
+3. **Self-correct** when implementation drifts from spec
+4. **Validate** component interactions match defined data flows
 
-_Deploy your own copy with one click._
+---
 
-### Run locally
+## Technical Stack
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/arhamkhnz/next-shadcn-admin-dashboard.git
-   ```
-   
-2. **Navigate into the project**
-   ```bash
-    cd next-shadcn-admin-dashboard
-   ```
-   
-3. **Install dependencies**
-   ```bash
-    npm install
-   ```
+| Layer | Technology |
+|-------|------------|
+| **Framework** | Next.js 15 (App Router) |
+| **Styling** | Tailwind CSS v4, shadcn/ui |
+| **Canvas** | React Flow |
+| **Auth & Database** | Supabase (Auth, PostgreSQL, Edge Functions) |
+| **AI** | Vercel AI SDK, Anthropic Claude 3.5 Sonnet/Opus |
+| **Deployment** | Vercel, GitHub Actions |
+| **Tooling** | TypeScript, Biome, Husky |
 
-4. **Start the development server**
-   ```bash
-   npm run dev
-   ```
+---
+
+## Installation
+
+### Prerequisites
+
+- Node.js 18+
+- pnpm (recommended) or npm
+- Supabase account (for auth and persistence)
+- Anthropic API key
+
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/ricky-the-god/ultimate_planner.git
+cd ultimate_planner
+
+# Install dependencies
+pnpm install
+
+# Copy environment template
+cp .env.example .env.local
+
+# Configure environment variables
+# NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+# NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+# ANTHROPIC_API_KEY=your_anthropic_key
+
+# Start development server
+pnpm dev
+```
 
 Your app will be running at [http://localhost:3000](http://localhost:3000)
 
-### Formatting and Linting
+---
 
-Format, lint, and organize imports
-```bash
-npx @biomejs/biome check --write
+## MCP Integration
+
+Ultimate Planner is designed to work seamlessly with Claude Code's MCP (Model Context Protocol) servers.
+
+### Playwright MCP
+
+Enables visual validation of implementations against your architecture.
+
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@anthropic/mcp-playwright"]
+    }
+  }
+}
 ```
-> For more information on available rules, fixes, and CLI options, refer to the [Biome documentation](https://biomejs.dev/).
+
+**Use cases:**
+- Screenshot comparison between spec and implementation
+- Automated visual regression testing
+- Component interaction validation
+
+### Context7 MCP
+
+Fetches up-to-date documentation for libraries in your stack.
+
+```json
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["@anthropic/mcp-context7"]
+    }
+  }
+}
+```
+
+**Use cases:**
+- Auto-fetch docs for dependencies in your architecture
+- Ensure AI uses current API references
+- Reduce hallucination in generated code
+
+### Recommended MCP Configuration
+
+Add to your `~/.claude/settings.json`:
+
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@anthropic/mcp-playwright"]
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["@anthropic/mcp-context7"]
+    }
+  }
+}
+```
 
 ---
 
-> [!IMPORTANT]  
-> This project is updated frequently. If you’re working from a fork or an older clone, pull the latest changes before syncing. Some updates may include breaking changes.
+## Project Structure
+
+```
+ultimate_planner/
+├── src/
+│   ├── app/                    # Next.js App Router
+│   │   ├── (main)/
+│   │   │   ├── dashboard/      # Dashboard pages
+│   │   │   └── auth/           # Authentication flows
+│   │   └── layout.tsx
+│   ├── components/
+│   │   └── ui/                 # shadcn/ui components
+│   ├── lib/
+│   │   ├── preferences/        # Theme & layout management
+│   │   └── utils.ts
+│   └── stores/                 # Zustand state management
+├── .claude/                    # Claude Code configuration
+└── media/                      # Static assets
+```
 
 ---
 
-Contributions are welcome. Feel free to open issues, feature requests, or start a discussion.
+## Roadmap
 
+### Phase 1: Foundation (Current)
+- [x] Dashboard UI framework
+- [x] Theme system with presets
+- [x] Authentication flows
+- [ ] React Flow canvas integration
+- [ ] Basic component library (services, databases)
 
-**Happy Vibe Coding!**
+### Phase 2: Intelligence
+- [ ] Decision panel system
+- [ ] AI Context Bridge (screenshot analysis)
+- [ ] CLAUDE_PLAN.md generation
+- [ ] Sub-agent configurations
+
+### Phase 3: Validation
+- [ ] Playwright MCP integration
+- [ ] Visual diff comparison
+- [ ] Agentic iteration loop
+- [ ] Architecture drift detection
+
+### Phase 4: Collaboration
+- [ ] Real-time multiplayer editing
+- [ ] Version control for architectures
+- [ ] Team decision audit logs
+- [ ] Export to Mermaid/PlantUML
+
+---
+
+## Contributing
+
+Contributions are welcome. This project follows a colocation-based architecture — each feature keeps its pages, components, and logic inside its route folder.
+
+```bash
+# Format and lint
+pnpm check:fix
+
+# Run type checks
+pnpm build
+```
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
+---
+
+## License
+
+MIT License. See [LICENSE](LICENSE) for details.
+
+---
+
+<p align="center">
+  <strong>Stop coding blind. Start with a visual spec.</strong>
+</p>

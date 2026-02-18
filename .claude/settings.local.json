@@ -6,7 +6,11 @@
       "Bash(npm run dev:*)",
       "mcp__playwright__browser_navigate",
       "Bash(ren \"ultimate_planner\" \"ultimate_planner\")",
-      "Bash(taskkill:*)"
+      "Bash(taskkill:*)",
+      "Bash(git commit:*)",
+      "Bash(npm install:*)",
+      "Bash(git add:*)",
+      "Bash(git push:*)"
     ]
   }
 }
