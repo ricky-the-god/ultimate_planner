@@ -18,11 +18,11 @@
 - **YAGNI (You Ain't Gonna Need It):** Only implement features defined in the current sprint. No placeholder code.
 
 ## 💻 WORKFLOW & COMMANDS
-- **Dev:** `pnpm dev`
-- **Build:** `pnpm build`
-- **Lint:** `pnpm lint`
-- **Visual Testing:** Always use **Playwright MCP** to verify UI changes after rendering.
-- **Docs:** Use **Context7 MCP** to fetch official documentation for Next.js 15 or Tailwind v4 before writing unfamiliar code.
+- **Dev:** `npm run dev`
+- **Build:** `npm run build`
+- **Lint:** `npm run lint`
+- **Visual Testing:** Always use **Playwright MCP** via `npx playwright test` after rendering.
+- **Docs:** Use **Context7 MCP** to fetch official documentation.
 
 ## 📏 CODING STANDARDS
 1. **TypeScript:** Strict mode. Zero `any`. Define `type` or `interface` for all data structures.
