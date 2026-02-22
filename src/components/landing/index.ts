@@ -1,4 +1,5 @@
 export { CTAFooter } from "./cta-footer";
+export { DiagramPreview } from "./diagram-preview";
 export { FeatureSection } from "./feature-section";
 export { Hero } from "./hero";
 export { HowItWorks } from "./how-it-works";

@@ -28,6 +28,14 @@ export const THEME_PRESET_OPTIONS = [
     },
   },
   {
+    label: "Canvas",
+    value: "canvas",
+    primary: {
+      light: "oklch(0.55 0.15 75)",
+      dark: "oklch(0.75 0.15 75)",
+    },
+  },
+  {
     label: "Soft Pop",
     value: "soft-pop",
     primary: {

@@ -120,7 +120,6 @@ async function main() {
   try {
     execSync(`npx @biomejs/biome format --write "${outputPath}"`, {
       encoding: "utf8",
-      shell: true,
       stdio: "pipe",
     });
   } catch {

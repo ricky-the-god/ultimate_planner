@@ -17,7 +17,14 @@
       "Bash(npm run lint)",
       "Bash(npx biome lint:*)",
       "Bash(timeout 15 npm run dev:*)",
-      "Bash(timeout 10 npm run dev)"
+      "Bash(timeout 10 npm run dev)",
+      "WebFetch(domain:editorialnew.com)",
+      "Bash(find:*)",
+      "WebFetch(domain:cosmos.so)",
+      "Bash(npm run lint:*)",
+      "Bash(timeout /t 10 /nobreak)",
+      "Bash(curl:*)",
+      "Bash(npx playwright:*)"
     ]
   }
 }

@@ -1,105 +1,96 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
-
 interface Feature {
-  icon: React.ReactNode;
+  number: string;
   title: string;
   description: string;
+  tags: string[];
 }
 
 const features: Feature[] = [
   {
-    icon: (
-      <svg aria-hidden="true" className="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
-        />
-      </svg>
-    ),
+    number: "01",
     title: "Visual Canvas",
     description:
-      "Drag-and-drop components onto an infinite canvas. Design microservices, databases, and APIs visually.",
+      "Drag-and-drop components onto an infinite canvas. Design microservices, databases, and APIs with precision.",
+    tags: ["React Flow", "Infinite Pan", "Zoom"],
   },
   {
-    icon: (
-      <svg aria-hidden="true" className="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-        />
-      </svg>
-    ),
+    number: "02",
     title: "AI-Powered Plans",
     description:
-      "Generate detailed implementation plans from your diagrams. Export markdown ready for your AI coding assistant.",
+      "Generate detailed implementation plans from your diagrams. Export markdown ready for Claude, GPT, or Copilot.",
+    tags: ["Claude API", "Markdown", "Export"],
   },
   {
-    icon: (
-      <svg aria-hidden="true" className="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-        />
-      </svg>
-    ),
+    number: "03",
     title: "Code-First Export",
     description: "Export your architecture as Terraform, Docker Compose, or Kubernetes manifests with a single click.",
+    tags: ["Terraform", "K8s", "Docker"],
   },
   {
-    icon: (
-      <svg aria-hidden="true" className="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-        />
-      </svg>
-    ),
-    title: "Real-time Collaboration",
+    number: "04",
+    title: "Real-time Sync",
     description: "Work together with your team in real-time. Share, comment, and iterate on designs instantly.",
+    tags: ["Supabase", "WebSocket", "Collab"],
   },
 ];
 
 export const FeatureSection = () => {
   return (
-    <section id="features" className="px-6 py-24">
-      <div className="mx-auto max-w-7xl">
+    <section id="features" className="relative px-6 py-32">
+      {/* Subtle dot pattern */}
+      <div className="pointer-events-none absolute inset-0 bg-cosmos-dots" />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
         {/* Section header */}
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">
+        <div className="mb-16">
+          <span className="mb-4 block font-mono-tight text-[11px] text-primary/80 uppercase tracking-widest">
+            Features
+          </span>
+          <h2 className="max-w-2xl font-normal text-3xl text-editorial text-zinc-950 leading-tight tracking-tight md:text-4xl lg:text-5xl dark:text-zinc-50">
             Everything you need to architect at scale
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Built for senior engineers who think in systems, not slides.
-          </p>
         </div>
 
-        {/* Feature grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {/* Feature grid - cosmos style */}
+        <div className="grid gap-4 md:grid-cols-2">
           {features.map((feature, index) => (
-            <Card
-              key={index}
-              className="group relative overflow-hidden border-border/50 bg-card/50 backdrop-blur-sm transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5"
+            <div
+              key={feature.number}
+              className="group relative rounded-xl border border-zinc-950/10 bg-zinc-950/[0.02] p-8 transition-all duration-300 hover:border-zinc-950/20 hover:bg-zinc-950/[0.04] dark:border-zinc-50/10 dark:bg-zinc-50/[0.02] dark:hover:border-zinc-50/20 dark:hover:bg-zinc-50/[0.04]"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <CardContent className="p-6">
-                <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-3 text-primary">{feature.icon}</div>
-                <h3 className="mb-2 text-lg font-semibold">{feature.title}</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">{feature.description}</p>
-              </CardContent>
-              {/* Subtle glow on hover */}
-              <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100">
-                <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-primary/10 blur-2xl" />
+              {/* Number */}
+              <span className="mb-6 block font-mono-tight text-[11px] text-zinc-950/30 dark:text-zinc-50/30">
+                {feature.number}
+              </span>
+
+              {/* Title */}
+              <h3 className="mb-3 font-normal text-lg text-zinc-950 tracking-tight dark:text-zinc-50">
+                {feature.title}
+              </h3>
+
+              {/* Description */}
+              <p className="mb-6 text-sm text-zinc-950/50 leading-relaxed dark:text-zinc-50/50">
+                {feature.description}
+              </p>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 font-mono-tight text-[10px]">
+                {feature.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-zinc-950/10 bg-zinc-950/5 px-2.5 py-1 text-zinc-950/40 dark:border-zinc-50/10 dark:bg-zinc-50/5 dark:text-zinc-50/40"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
-            </Card>
+
+              {/* Hover glow */}
+              <div className="-inset-px pointer-events-none absolute rounded-xl bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            </div>
           ))}
         </div>
       </div>

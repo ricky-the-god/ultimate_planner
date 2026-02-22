@@ -1,101 +1,76 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
-
 interface UseCase {
-  icon: React.ReactNode;
   title: string;
   description: string;
+  example: string;
 }
 
 const useCases: UseCase[] = [
   {
-    icon: (
-      <svg aria-hidden="true" className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-        />
-      </svg>
-    ),
     title: "Microservices Architecture",
     description: "Design event-driven systems with clear service boundaries, message queues, and API gateways.",
+    example: "E-commerce platform with 12 services",
   },
   {
-    icon: (
-      <svg aria-hidden="true" className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
-        />
-      </svg>
-    ),
     title: "Data Pipeline Design",
     description: "Map out ETL flows, data lakes, and real-time streaming architectures with proper lineage tracking.",
+    example: "Analytics pipeline processing 1M events/day",
   },
   {
-    icon: (
-      <svg aria-hidden="true" className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-        />
-      </svg>
-    ),
     title: "Security Architecture",
     description: "Document authentication flows, authorization policies, and security boundaries across your stack.",
+    example: "Zero-trust network architecture",
   },
   {
-    icon: (
-      <svg aria-hidden="true" className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-        />
-      </svg>
-    ),
     title: "Cloud Infrastructure",
     description: "Plan multi-region deployments, disaster recovery, and auto-scaling strategies visually.",
+    example: "Global CDN with 5 edge regions",
   },
 ];
 
 export const UseCases = () => {
   return (
-    <section id="use-cases" className="bg-secondary/30 px-6 py-24">
-      <div className="mx-auto max-w-7xl">
+    <section id="use-cases" className="relative px-6 py-32">
+      {/* Dot pattern */}
+      <div className="pointer-events-none absolute inset-0 bg-cosmos-dots" />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
         {/* Section header */}
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">Built for real-world architecture</h2>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Whether you&apos;re designing a greenfield system or documenting existing infrastructure.
-          </p>
+        <div className="mb-16">
+          <span className="mb-4 block font-mono-tight text-[11px] text-primary/80 uppercase tracking-widest">
+            Use Cases
+          </span>
+          <h2 className="max-w-2xl font-normal text-3xl text-editorial text-zinc-950 leading-tight tracking-tight md:text-4xl lg:text-5xl dark:text-zinc-50">
+            Built for real-world architecture
+          </h2>
         </div>
 
-        {/* Use case grid */}
-        <div className="grid gap-6 md:grid-cols-2">
+        {/* Use case list */}
+        <div className="space-y-3">
           {useCases.map((useCase, index) => (
-            <Card
-              key={index}
-              className="border-border/50 bg-background/50 backdrop-blur-sm transition-all hover:border-border"
+            <div
+              key={useCase.title}
+              className="group flex flex-col gap-4 rounded-xl border border-zinc-950/10 bg-zinc-950/[0.02] p-6 transition-all duration-300 hover:border-zinc-950/20 hover:bg-zinc-950/[0.04] md:flex-row md:items-center md:justify-between dark:border-zinc-50/10 dark:bg-zinc-50/[0.02] dark:hover:border-zinc-50/20 dark:hover:bg-zinc-50/[0.04]"
             >
-              <CardContent className="flex gap-4 p-6">
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                  {useCase.icon}
-                </div>
+              {/* Left: Number + Title */}
+              <div className="flex items-start gap-6 md:items-center">
+                <span className="font-mono-tight text-[11px] text-zinc-950/30 dark:text-zinc-50/30">0{index + 1}</span>
                 <div>
-                  <h3 className="mb-2 font-semibold">{useCase.title}</h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{useCase.description}</p>
+                  <h3 className="mb-1 font-normal text-sm text-zinc-950 tracking-tight dark:text-zinc-50">
+                    {useCase.title}
+                  </h3>
+                  <p className="text-sm text-zinc-950/50 dark:text-zinc-50/50">{useCase.description}</p>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+
+              {/* Right: Example */}
+              <div className="ml-10 font-mono-tight text-[11px] text-zinc-950/40 md:ml-0 md:text-right dark:text-zinc-50/40">
+                <span className="rounded-full border border-zinc-950/10 bg-zinc-950/5 px-3 py-1.5 dark:border-zinc-50/10 dark:bg-zinc-50/5">
+                  {useCase.example}
+                </span>
+              </div>
+            </div>
           ))}
         </div>
       </div>

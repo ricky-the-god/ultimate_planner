@@ -5,6 +5,7 @@
 @import "../styles/presets/brutalist.css";
 @import "../styles/presets/soft-pop.css";
 @import "../styles/presets/tangerine.css";
+@import "../styles/presets/canvas.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -204,6 +205,12 @@ These serve as the fallback; there is no separate default.css file. */
   html[data-font="greatVibes"] body {
     --font-sans: var(--font-great-vibes);
   }
+  html[data-font="cormorantGaramond"] body {
+    --font-sans: var(--font-cormorant-garamond);
+  }
+  html[data-font="jetbrainsMono"] body {
+    --font-sans: var(--font-jetbrains-mono);
+  }
 }
 
 html {
@@ -212,4 +219,135 @@ html {
 
 .disable-transitions * {
   transition: none !important;
+}
+
+/* Stagger animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s ease-out forwards;
+}
+
+/* Animation delay utilities */
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+.animation-delay-600 { animation-delay: 600ms; }
+.animation-delay-700 { animation-delay: 700ms; }
+.animation-delay-800 { animation-delay: 800ms; }
+
+/* Canvas background patterns */
+.bg-canvas-grid {
+  background-image: linear-gradient(var(--canvas-grid, oklch(0.20 0.01 60)) 1px, transparent 1px),
+    linear-gradient(90deg, var(--canvas-grid, oklch(0.20 0.01 60)) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-canvas-dots {
+  background-image: radial-gradient(var(--canvas-dot, oklch(0.25 0.01 60)) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.bg-canvas-dots-lg {
+  background-image: radial-gradient(var(--canvas-dot, oklch(0.25 0.01 60)) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+}
+
+/* Cosmos-style micro-dot grid */
+.bg-cosmos-dots {
+  background-image: radial-gradient(oklch(1 0 0 / 8%) 0.5px, transparent 0.5px);
+  background-size: 16px 16px;
+}
+
+/* Cosmos radial gradient flare */
+.bg-cosmos-gradient {
+  background: radial-gradient(
+    ellipse 80% 50% at 50% 0%,
+    var(--cosmos-gradient-center, oklch(0.12 0.02 75 / 30%)),
+    transparent 60%
+  );
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: oklch(1 0 0 / 3%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-strong {
+  background: oklch(1 0 0 / 5%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Ultra-thin border utility */
+.border-cosmos {
+  border-width: 1px;
+  border-color: oklch(1 0 0 / 10%);
+}
+
+/* Canvas glow effects */
+.canvas-glow {
+  box-shadow: 0 0 60px var(--canvas-glow, oklch(0.75 0.15 75 / 0.1));
+}
+
+.canvas-glow-sm {
+  box-shadow: 0 0 30px var(--canvas-glow, oklch(0.75 0.15 75 / 0.1));
+}
+
+/* Tech UI mono text */
+.font-mono-tight {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  letter-spacing: -0.02em;
+}
+
+/* Editorial-style typography */
+.text-editorial {
+  letter-spacing: -0.03em;
+  font-feature-settings: "ss01" on, "ss02" on;
+}
+
+/* Subtle border glow on focus */
+.focus-glow:focus-visible {
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring), 0 0 20px var(--canvas-glow);
 }
